@@ -1,0 +1,20 @@
+<header class="header">
+  <div class="hamburger-container">
+    <div class="hamburger-button" (click)="openOrCloseMenu()">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </div>
+  <div class="main-container">
+    <div>{{chosenCity}}</div>
+    <div>{{currentDate | date}}</div>
+  </div>
+  <div class="nav-container">
+    <app-cities></app-cities>
+  </div>
+  <app-cities [ngClass]="{'app-cities': isCitiesMenuOpen, 'none': !isCitiesMenuOpen}"></app-cities>
+</header>
+
+
+

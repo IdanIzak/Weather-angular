@@ -1,0 +1,32 @@
+<div class="container" *ngIf="weather; else message">
+  <div class="description"> {{weather.days[0].description}}</div>
+  <div class="temps-container">
+    <div class="current-temp">{{weather.days[0].temp}}<span class="unit">C</span></div>
+    <div class="min-max-container">
+      <div class="min-max-temps">{{weather.days[0].tempmin}} C</div>
+      <div class="min-max-temps">{{weather.days[0].tempmax}} C</div>
+    </div>
+  </div>
+</div>
+
+<div class="graph-container" *ngIf="lineChartData">
+  <div class="scroll-left">
+    <button (click)="scrollLeft()" [disabled]="forecastDay === 0">Previous day</button>
+  </div>
+  <div class="scroll-right">
+    <button (click)="scrollRight()" [disabled]="forecastDay === 4">Next day</button>
+  </div>
+  <canvas baseChart class="graph" height="250"
+    [type]="'line'"
+    [data]="lineChartData"
+    [options]="lineChartOptions"
+    [legend]="lineChartLegend">
+  </canvas>
+</div>
+
+<ng-template #message>
+  <div class="message">
+    <p class="red">Weather data is unavailable.</p>
+    <p>Please check your internet connection and try again.</p>
+  </div>
+</ng-template>
